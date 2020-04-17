@@ -4,7 +4,7 @@ var config = require('./config');
 
 var url = config.diarioUrl;
 let date = new Date();
-var stringDate = `/docs/diario_oficial/diarios/${date.getFullYear()}/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}_1.pdf`;
+var stringDate = `/docs/diario_oficial/diarios/${date.getFullYear()}/${date.getFullYear()}-${(date.getMonth()+ 1).toString().padStart(2,"0") }-${date.getDate().toString().padStart(2,"0")}_1.pdf`;
 
 const options = {
     hostname: config.diarioUrl,

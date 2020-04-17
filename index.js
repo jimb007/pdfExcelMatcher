@@ -49,7 +49,9 @@ async function getMatches(pdfNameDocument, keyWords) {
             return pagesToArray(pdfObject);
         }
         catch (err) {
-            if (err.name == "MissingPDFException") {
+            //Use this array to add exceptions and try to download again the pdf document.
+            var exceptions= ["MissingPDFException","UnknownErrorException"];            
+            if (exceptions.includes(err.name)) {
                 try {
                     console.log("PDF not founded trying to download....");
                     let downloadFileResult = await downloadFile(pdfNameDocument);                    
